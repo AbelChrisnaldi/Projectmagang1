@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Telkom University — Dashboard</title>
 
+    <link rel="icon" type="image/png" href="{{ asset('images/iconiebi.png') }}">
+
     <style>
         * {
             margin: 0;
