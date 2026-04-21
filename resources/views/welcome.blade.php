@@ -59,7 +59,6 @@
             width: 60px;
             height: 60px;
             border-radius: 12px;
-            background: #d81e3a;
             color: white;
             display: flex;
             justify-content: center;
@@ -216,19 +215,20 @@
 
     <header>
         <div class="brand">
-            <div class="logo">Tel-U</div>
+            <img src="{{ asset('images/iconiebi.png') }}" alt="Logo Telkom University">
             <div>
-                <h2>Telkom University</h2>
+                <h2>Industrial Engineering and Business Innovation (IEBI)</h2>
                 <p style="font-size: 14px; color: #666;">Dashboard Akademik</p>
             </div>
         </div>
 
-        <div>
+        <div style="display: none;">
             <button class="btn small" id="scrollToDashboard">Lihat Dashboard</button>
             <button class="btn small" id="refreshDashboard">Refresh</button>
             <button class="btn small" id="fullscreenDash">Fullscreen</button>
             <button class="btn" id="darkModeBtn">Mode Gelap</button>
         </div>
+
     </header>
 
     <!-- TABS -->
@@ -334,20 +334,21 @@
     </footer>
 
     <script>
-        /* ===========================================
+
+       /* ===========================================
                            🌙 DARK MODE
-                        =========================================== */
+                        ===========================================
         document.getElementById("darkModeBtn").onclick = () => {
             document.body.classList.toggle("dark");
             darkModeBtn.textContent =
                 document.body.classList.contains("dark") ?
                 "Mode Terang" :
                 "Mode Gelap";
-        };
+        };*/
 
         /* ===========================================
            DASHBOARD BUTTONS
-        =========================================== */
+        ===========================================
         const iframe = document.getElementById("dashboardFrame");
 
         scrollToDashboard.onclick = () => {
@@ -360,7 +361,7 @@
         };
         fullscreenDash.onclick = () => {
             iframe.requestFullscreen();
-        };
+        };*/
 
         /* ===========================================
            TAB LOGIC
