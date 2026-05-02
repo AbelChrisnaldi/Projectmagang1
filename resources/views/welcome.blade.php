@@ -217,8 +217,8 @@
         <div class="brand">
             <img src="{{ asset('images/iconiebi.png') }}" alt="Logo Telkom University">
             <div>
-                <h2>Industrial Engineering and Business Innovation (IEBI)</h2>
-                <p style="font-size: 14px; color: #666;">Dashboard Akademik</p>
+                <h2>Research Group Of Industrial Engineering and Business Innovation (IEBI)</h2>
+                <p style="font-size: 14px; color: #666;">Dashboard</p>
             </div>
         </div>
 
@@ -330,7 +330,7 @@
     </div>
 
     <footer>
-        &copy; 2026 — <span>Telkom University</span> • Semua Program Studi
+        &copy; 2026 — <span>TUS KK</span> • Industrial Engineering and Business Innovation
     </footer>
 
     <script>
