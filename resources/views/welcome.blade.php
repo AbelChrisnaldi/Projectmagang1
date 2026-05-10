@@ -55,6 +55,12 @@
             gap: 14px;
         }
 
+        .brand img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
         .logo {
             width: 60px;
             height: 60px;
@@ -137,6 +143,15 @@
             margin-top: 15px;
         }
 
+        .table-scroll {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .table-scroll table {
+            min-width: 760px;
+        }
+
         th,
         td {
             padding: 10px;
@@ -148,33 +163,11 @@
             color: white;
         }
 
-        /* POPUP FORM */
-        #popupContainer {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .popup-box {
-            background: white;
-            padding: 20px;
-            border-radius: 16px;
-            width: 420px;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
+        td:nth-child(4),
+        td:nth-child(5),
+        th:nth-child(4),
+        th:nth-child(5) {
+            text-align: center;
         }
 
         /* DASHBOARD BOX */
@@ -208,6 +201,46 @@
             font-weight: bold;
             color: #d81e3a;
         }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            header {
+                flex-wrap: wrap;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .brand {
+                align-items: flex-start;
+            }
+
+            .brand h1 {
+                font-size: 18px;
+                line-height: 1.25;
+            }
+
+            .tab-container {
+                display: flex;
+                gap: 8px;
+            }
+
+            .tab-btn {
+                flex: 1;
+                margin-right: 0;
+            }
+
+            .tab-content {
+                padding: 16px;
+            }
+
+            .dashboard-box {
+                height: 65vh;
+                min-height: 420px;
+            }
+        }
     </style>
 </head>
 
@@ -217,7 +250,7 @@
         <div class="brand">
             <img src="{{ asset('images/iconiebi.png') }}" alt="Logo Telkom University">
             <div>
-                <h2>Research Group Of Industrial Engineering and Business Innovation (IEBI)</h2>
+                <h1>Research Group of Industrial Engineering and Business Innovation (IEBI)</h1>
                 <p style="font-size: 14px; color: #666;">Dashboard</p>
             </div>
         </div>
@@ -232,253 +265,105 @@
     </header>
 
     <!-- TABS -->
-    <div class="tab-container">
-        <button class="tab-btn active" data-tab="dashboardTab">Dashboard</button>
-        <button class="tab-btn" data-tab="dataTab">Arsip</button>
+    <div class="tab-container" role="tablist" aria-label="Dashboard sections">
+        <button type="button" class="tab-btn active" data-tab="dashboardTab" role="tab" aria-controls="dashboardTab" aria-selected="true">Dashboard</button>
+        <button type="button" class="tab-btn" data-tab="dataTab" role="tab" aria-controls="dataTab" aria-selected="false">Archive</button>
     </div>
 
     <!-- TAB DASHBOARD -->
-    <div id="dashboardTab" class="tab-content" style="display:block;">
-        <h2 style="color:#d81e3a;">Dashboard Dosen</h2>
+    <main>
+    <section id="dashboardTab" class="tab-content" style="display:block;">
+        <h2 style="color:#d81e3a;">Dashboard</h2>
 
         <div class="dashboard-box">
-            <iframe title="Dashboard Dosen Riib" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZjA0MmQ5OTUtNDUxNC00MTI1LWI2MTMtYzE2ZmY1ODdlYTM0IiwidCI6IjkwYWZmZTBmLWMyYTMtNDEwOC1iYjk4LTZjZWI0ZTk0ZWYxNSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+            <iframe title="Dashboard Dosen Riib" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZjA0MmQ5OTUtNDUxNC00MTI1LWI2MTMtYzE2ZmY1ODdlYTM0IiwidCI6IjkwYWZmZTBmLWMyYTMtNDEwOC1iYjk4LTZjZWI0ZTk0ZWYxNSIsImMiOjEwfQ%3D%3D" allowfullscreen></iframe>
         </div>
-    </div>
+    </section>
 
     <!-- TAB DATA -->
-    <div id="dataTab" class="tab-content" style="display:none;">
+    <section id="dataTab" class="tab-content" style="display:none;">
         <h2 style="color:#d81e3a;">Data Kegiatan Akademik</h2>
 
-        <table class="w-full border-collapse table-fixed">
+        <div class="table-scroll">
+        <table>
             <thead>
-                <tr class="bg-blue-500 text-white">
-                    <th class="px-4 py-3 text-left w-[12%]">Tanggal</th>
-                    <th class="px-4 py-3 text-left w-[18%]">Kegiatan</th>
-                    <th class="px-4 py-3 text-left w-[40%]">Outline</th>
-                    <th class="px-4 py-3 text-center w-[15%]">Slide</th>
-                    <th class="px-4 py-3 text-center w-[15%]">Notulensi</th>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Kegiatan</th>
+                    <th>Outline</th>
+                    <th>Slide</th>
+                    <th>Notulensi</th>
                 </tr>
             </thead>
 
-            <tbody class="bg-white">
-                @foreach ($kegiatans as $k)
-                    <tr class="border-b align-top">
-                        <td class="px-4 py-3">
-                            {{ \Carbon\Carbon::parse($k->tanggal)->format('Y-m-d') }}
+            <tbody>
+                @forelse ($kegiatans as $k)
+                    <tr>
+                        <td>
+                            {{ $k->tanggal ? \Carbon\Carbon::parse($k->tanggal)->format('Y-m-d') : '-' }}
                         </td>
 
-                        <td class="px-4 py-3">
+                        <td>
                             {{ $k->kegiatan }}
                         </td>
 
-                        <td class="px-4 py-3 break-words">
+                        <td>
                             {{ $k->outline }}
                         </td>
 
-                        <td class="px-4 py-3 text-center">
+                        <td>
                             @if ($k->link_slide)
-                                <a href="{{ $k->link_slide }}" target="_blank" class="text-blue-600 hover:underline">
+                                <a href="{{ $k->link_slide }}" target="_blank" rel="noopener noreferrer">
                                     Link
                                 </a>
                             @else
-                                <span class="text-gray-400">-</span>
+                                <span>-</span>
                             @endif
                         </td>
 
-                        <td class="px-4 py-3 text-center">
+                        <td>
                             @if ($k->link_notulensi)
-                                <a href="{{ $k->link_notulensi }}" target="_blank"
-                                    class="text-blue-600 hover:underline">
+                                <a href="{{ $k->link_notulensi }}" target="_blank" rel="noopener noreferrer">
                                     Link
                                 </a>
                             @else
-                                <span class="text-gray-400">-</span>
+                                <span>-</span>
                             @endif
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="5" style="text-align:center; color:#666;">Belum ada data</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
-    </div>
-
-    <!-- POPUP -->
-    <div id="popupContainer">
-        <div class="popup-box">
-            <h3 id="popupTitle">Tambah Kegiatan</h3>
-
-            <input type="hidden" id="editId">
-
-            <label>Tanggal:</label>
-            <input type="date" id="tanggal" class="input-field">
-
-            <label>Kegiatan:</label>
-            <input type="text" id="kegiatan" class="input-field">
-
-            <label>Outline:</label>
-            <textarea id="outline" class="input-field" rows="4"></textarea>
-
-            <label>Link Slide:</label>
-            <input type="url" id="link_slide" class="input-field">
-
-            <label>Link Notulensi:</label>
-            <input type="url" id="link_notulensi" class="input-field">
-
-            <button class="btn small" onclick="saveData()">Simpan</button>
-            <button class="btn small" style="background:#777;" onclick="closePopup()">Batal</button>
         </div>
-    </div>
+    </section>
+    </main>
 
     <footer>
         &copy; 2026 — <span>TUS KK</span> • Industrial Engineering and Business Innovation
     </footer>
 
     <script>
-
-       /* ===========================================
-                           🌙 DARK MODE
-                        ===========================================
-        document.getElementById("darkModeBtn").onclick = () => {
-            document.body.classList.toggle("dark");
-            darkModeBtn.textContent =
-                document.body.classList.contains("dark") ?
-                "Mode Terang" :
-                "Mode Gelap";
-        };*/
-
-        /* ===========================================
-           DASHBOARD BUTTONS
-        ===========================================
-        const iframe = document.getElementById("dashboardFrame");
-
-        scrollToDashboard.onclick = () => {
-            document.getElementById("dashboardTab").scrollIntoView({
-                behavior: "smooth"
-            });
-        };
-        refreshDashboard.onclick = () => {
-            iframe.src = iframe.src;
-        };
-        fullscreenDash.onclick = () => {
-            iframe.requestFullscreen();
-        };*/
-
-        /* ===========================================
-           TAB LOGIC
-        =========================================== */
         document.querySelectorAll(".tab-btn").forEach(btn => {
-            btn.onclick = () => {
-                document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".tab-btn").forEach(b => {
+                    b.classList.remove("active");
+                    b.setAttribute("aria-selected", "false");
+                });
                 btn.classList.add("active");
+                btn.setAttribute("aria-selected", "true");
 
                 document.querySelectorAll(".tab-content").forEach(c => c.style.display = "none");
-                document.getElementById(btn.dataset.tab).style.display = "block";
-            };
-        });
 
-        /* ===========================================
-           CRUD — LOAD DATA (MySQL)
-        =========================================== */
-        function loadData() {
-            fetch("/api/kegiatan")
-                .then(res => res.json())
-                .then(data => {
-                    let html = "";
-                    data.forEach(k => {
-                        html += `
-                <tr>
-                    <td>${k.tanggal ?? "-"}</td>
-                    <td>${k.kegiatan}</td>
-                    <td><pre style="white-space:pre-line">${k.outline ?? ""}</pre></td>
-                    <td><a href="${k.link_slide}" target="_blank">link</a></td>
-                    <td><a href="${k.link_notulensi}" target="_blank">link</a></td>
-                    <td>
-                        <button class="btn small" onclick="editData(${k.id})">Edit</button>
-                        <button class="btn small" style="background:#d9534f" onclick="deleteData(${k.id})">Hapus</button>
-                    </td>
-                </tr>`;
-                    });
-                    document.getElementById("dataBody").innerHTML = html;
-                });
-        }
-        loadData();
-
-        /* ===========================================
-           SHOW + CLOSE POPUP
-        =========================================== */
-        function showAddForm() {
-            document.getElementById("popupTitle").innerText = "Tambah Kegiatan";
-            document.getElementById("editId").value = "";
-            document.getElementById("tanggal").value = "";
-            document.getElementById("kegiatan").value = "";
-            document.getElementById("outline").value = "";
-            document.getElementById("link_slide").value = "";
-            document.getElementById("link_notulensi").value = "";
-            document.getElementById("popupContainer").style.display = "flex";
-        }
-
-        function closePopup() {
-            document.getElementById("popupContainer").style.display = "none";
-        }
-
-        /* ===========================================
-           SAVE / UPDATE
-        =========================================== */
-        function saveData() {
-            const id = document.getElementById("editId").value;
-
-            const payload = {
-                tanggal: tanggal.value,
-                kegiatan: kegiatan.value,
-                outline: outline.value,
-                link_slide: link_slide.value,
-                link_notulensi: link_notulensi.value
-            };
-
-            fetch(id ? `/api/kegiatan/${id}` : "/api/kegiatan", {
-                method: id ? "PUT" : "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            }).then(() => {
-                closePopup();
-                loadData();
+                const target = document.getElementById(btn.dataset.tab);
+                if (target) {
+                    target.style.display = "block";
+                }
             });
-        }
-
-        /* ===========================================
-           EDIT
-        =========================================== */
-        function editData(id) {
-            fetch("/api/kegiatan")
-                .then(res => res.json())
-                .then(list => {
-                    const k = list.find(x => x.id === id);
-
-                    popupTitle.innerText = "Edit Kegiatan";
-                    editId.value = k.id;
-                    tanggal.value = k.tanggal;
-                    kegiatan.value = k.kegiatan;
-                    outline.value = k.outline;
-                    link_slide.value = k.link_slide;
-                    link_notulensi.value = k.link_notulensi;
-
-                    popupContainer.style.display = "flex";
-                });
-        }
-
-        /* ===========================================
-           DELETE
-        =========================================== */
-        function deleteData(id) {
-            if (!confirm("Hapus kegiatan ini?")) return;
-
-            fetch(`/api/kegiatan/${id}`, {
-                    method: "DELETE"
-                })
-                .then(() => loadData());
-        }
+        });
     </script>
 
 </body>

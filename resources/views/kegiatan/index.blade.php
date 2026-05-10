@@ -8,12 +8,12 @@
             </div>
 
             <nav class="p-4 space-y-2">
-                <a href="{{ route('kegiatan.index') }}"
+                <a href="{{ route('dashboard') }}"
                    class="block px-4 py-2 rounded hover:bg-blue-100">
                     📋 Lihat Data
                 </a>
 
-                <a href="{{ route('kegiatan.index') }}#form"
+                <a href="{{ route('dashboard') }}#form"
                    class="block px-4 py-2 rounded hover:bg-blue-100">
                     ➕ Input Data
                 </a>

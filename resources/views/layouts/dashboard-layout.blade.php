@@ -13,7 +13,7 @@
                     📋 List Data
                 </a>
 
-                <a href="{{ route('dashboard.create') }}"
+                <a href="{{ route('dashboard') }}#form"
                    class="block px-3 py-2 rounded hover:bg-blue-100">
                     ➕ Input Data
                 </a>
