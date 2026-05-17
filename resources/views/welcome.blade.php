@@ -103,20 +103,9 @@
         }
 
         /* TABS */
-        .tab-toolbar {
+        .tab-container {
             max-width: 1200px;
             margin: 0 auto 15px auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .tab-container,
-        .auth-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .tab-btn {
@@ -134,22 +123,6 @@
             background: #4b8df8;
             color: white;
             transform: translateY(-2px);
-        }
-
-        .auth-actions .btn {
-            margin-left: 0;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .btn.secondary {
-            background: #ffffff;
-            color: #2c72e3;
-            border: 1px solid #b8cbf5;
-        }
-
-        .btn.secondary:hover {
-            background: #edf4ff;
         }
 
         /* CONTENT */
@@ -249,19 +222,12 @@
                 line-height: 1.25;
             }
 
-            .tab-toolbar {
+            .tab-container {
                 display: flex;
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .tab-container,
-            .auth-actions {
                 gap: 8px;
             }
 
-            .tab-btn,
-            .auth-actions .btn {
+            .tab-btn {
                 flex: 1;
                 margin-right: 0;
             }
@@ -299,15 +265,9 @@
     </header>
 
     <!-- TABS -->
-    <div class="tab-toolbar">
-        <div class="tab-container" role="tablist" aria-label="Dashboard sections">
-            <button type="button" class="tab-btn active" data-tab="dashboardTab" role="tab" aria-controls="dashboardTab" aria-selected="true">Dashboard</button>
-            <button type="button" class="tab-btn" data-tab="dataTab" role="tab" aria-controls="dataTab" aria-selected="false">Archive</button>
-        </div>
-        <div class="auth-actions" aria-label="Account actions">
-            <a class="btn secondary" href="{{ route('login') }}">Sign In</a>
-            <a class="btn" href="{{ route('register') }}">Sign Up</a>
-        </div>
+    <div class="tab-container" role="tablist" aria-label="Dashboard sections">
+        <button type="button" class="tab-btn active" data-tab="dashboardTab" role="tab" aria-controls="dashboardTab" aria-selected="true">Dashboard</button>
+        <button type="button" class="tab-btn" data-tab="dataTab" role="tab" aria-controls="dataTab" aria-selected="false">Archive</button>
     </div>
 
     <!-- TAB DASHBOARD -->
