@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ProfileController;
 
@@ -30,6 +31,9 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/dashboard/{kegiatan}', [DashboardController::class, 'destroy'])
         ->name('kegiatan.destroy');
+
+    Route::resource('documents', DocumentController::class)
+        ->except(['show']);
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -268,6 +268,7 @@
     <div class="tab-container" role="tablist" aria-label="Dashboard sections">
         <button type="button" class="tab-btn active" data-tab="dashboardTab" role="tab" aria-controls="dashboardTab" aria-selected="true">Dashboard</button>
         <button type="button" class="tab-btn" data-tab="dataTab" role="tab" aria-controls="dataTab" aria-selected="false">Archive</button>
+        <button type="button" class="tab-btn" data-tab="documentTab" role="tab" aria-controls="documentTab" aria-selected="false">Document</button>
     </div>
 
     <!-- TAB DASHBOARD -->
@@ -334,6 +335,49 @@
                 @empty
                     <tr>
                         <td colspan="5" style="text-align:center; color:#666;">Belum ada data</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+        </div>
+    </section>
+
+    <!-- TAB DOKUMEN -->
+    <section id="documentTab" class="tab-content" style="display:none;">
+        <h2 style="color:#d81e3a;">Dokumen</h2>
+
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Dokumen</th>
+                    <th>Link Dokumen</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @forelse ($documents as $document)
+                    <tr>
+                        <td style="text-align:center;">
+                            {{ $loop->iteration }}
+                        </td>
+
+                        <td>
+                            <a href="{{ $document->link }}" target="_blank" rel="noopener noreferrer">
+                                {{ $document->name }}
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="{{ $document->link }}" target="_blank" rel="noopener noreferrer" style="word-break: break-all;">
+                                {{ $document->link }}
+                            </a>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="3" style="text-align:center; color:#666;">Belum ada dokumen</td>
                     </tr>
                 @endforelse
             </tbody>
