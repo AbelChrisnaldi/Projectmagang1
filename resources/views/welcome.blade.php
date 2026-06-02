@@ -248,7 +248,9 @@
 
     <header>
         <div class="brand">
-            <img src="{{ asset('images/iconiebi.png') }}" alt="Logo Telkom University">
+            <a href="https://iebi.rg.telkomuniversity.ac.id/" target="_blank" rel="noopener noreferrer">
+                <img src="{{ asset('images/iconiebi.png') }}" alt="Logo Telkom University">
+            </a>
             <div>
                 <h1>Research Group of Industrial Engineering and Business Innovation (IEBI)</h1>
                 <p style="font-size: 14px; color: #666;">Dashboard</p>
@@ -364,9 +366,7 @@
                         </td>
 
                         <td>
-                            <a href="{{ $document->link }}" target="_blank" rel="noopener noreferrer">
-                                {{ $document->name }}
-                            </a>
+                            {{ $document->name }}
                         </td>
 
                         <td>

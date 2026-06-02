@@ -68,12 +68,7 @@
                             @forelse ($documents as $document)
                                 <tr class="border-t">
                                     <td class="p-2">
-                                        <a href="{{ $document->link }}"
-                                           target="_blank"
-                                           rel="noopener noreferrer"
-                                           class="text-blue-600 hover:underline">
-                                            {{ $document->name }}
-                                        </a>
+                                        {{ $document->name }}
                                     </td>
                                     <td class="p-2">
                                         <a href="{{ $document->link }}"
