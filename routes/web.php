@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\DosenRiibController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ProfileController;
 
@@ -34,6 +35,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('documents', DocumentController::class)
         ->except(['show']);
+
+    Route::resource('dosen-riib', DosenRiibController::class)
+        ->parameters(['dosen-riib' => 'dosenRiib'])
+        ->except(['show', 'create']);
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

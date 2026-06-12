@@ -19,6 +19,10 @@
                     <x-nav-link :href="route('documents.index')" :active="request()->routeIs('documents.*')">
                         {{ __('Dokumen') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('dosen-riib.index')" :active="request()->routeIs('dosen-riib.*')">
+                        {{ __('List Dosen Riib') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -77,6 +81,10 @@
 
             <x-responsive-nav-link :href="route('documents.index')" :active="request()->routeIs('documents.*')">
                 {{ __('Dokumen') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('dosen-riib.index')" :active="request()->routeIs('dosen-riib.*')">
+                {{ __('List Dosen Riib') }}
             </x-responsive-nav-link>
         </div>
 
