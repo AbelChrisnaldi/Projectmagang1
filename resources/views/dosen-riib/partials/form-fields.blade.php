@@ -6,7 +6,7 @@
         ['name' => 'nama_dosen', 'label' => 'Nama Dosen', 'type' => 'text', 'maxlength' => 150],
         ['name' => 'prodi', 'label' => 'Prodi', 'type' => 'text', 'maxlength' => 100],
         ['name' => 'kk', 'label' => 'KK', 'type' => 'text', 'maxlength' => 10],
-        ['name' => 'sub_kk', 'label' => 'Sub KK', 'type' => 'text', 'maxlength' => 10],
+        ['name' => 'sub_kk', 'label' => 'Sub KK / Lab', 'type' => 'text', 'maxlength' => 100],
         ['name' => 'pendidikan_terakhir', 'label' => 'Pendidikan Terakhir', 'type' => 'text', 'maxlength' => 10],
         ['name' => 'tahun_masuk', 'label' => 'Tahun Masuk', 'type' => 'number', 'maxlength' => null],
         ['name' => 'nidn', 'label' => 'NIDN', 'type' => 'text', 'maxlength' => 20],

@@ -51,7 +51,7 @@ class DosenRiibController extends Controller
             'prodi' => 'nullable|string|max:100',
             'kk' => 'nullable|string|max:10',
             'jad' => 'nullable|in:NJFA,AA,L,LK,GB',
-            'sub_kk' => 'nullable|string|max:10',
+            'sub_kk' => 'nullable|string|max:100',
             'pendidikan_terakhir' => 'nullable|string|max:10',
             'tahun_masuk' => 'nullable|integer',
             'sedang_studi_lanjut' => 'nullable|boolean',

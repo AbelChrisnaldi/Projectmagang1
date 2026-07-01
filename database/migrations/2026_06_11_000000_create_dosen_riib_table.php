@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('prodi', 100)->nullable();
             $table->string('kk', 10)->nullable();
             $table->enum('jad', ['NJFA', 'AA', 'L', 'LK', 'GB'])->nullable();
-            $table->string('sub_kk', 10)->nullable();
+            $table->string('sub_kk', 100)->nullable();
             $table->string('pendidikan_terakhir', 10)->nullable();
             $table->integer('tahun_masuk')->nullable();
             $table->boolean('sedang_studi_lanjut')->nullable()->default(false);

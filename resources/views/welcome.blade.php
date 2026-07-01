@@ -279,7 +279,7 @@
         <h2 style="color:#d81e3a;">Dashboard</h2>
 
         <div class="dashboard-box">
-            <iframe title="Dashboard Dosen Riib" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZjA0MmQ5OTUtNDUxNC00MTI1LWI2MTMtYzE2ZmY1ODdlYTM0IiwidCI6IjkwYWZmZTBmLWMyYTMtNDEwOC1iYjk4LTZjZWI0ZTk0ZWYxNSIsImMiOjEwfQ%3D%3D" allowfullscreen></iframe>
+            <iframe title="Dashboard Dosen Riib" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZjA0MmQ5OTUtNDUxNC00MTI1LWI2MTMtYzE2ZmY1ODdlYTM0IiwidCI6IjkwYWZmZTBmLWMyYTMtNDEwOC1iYjk4LTZjZWI0ZTk0ZWYxNSIsImMiOjEwfQ%3D%3D&pageName=14660ed8e21f3f699c64" frameborder="0" allowFullScreen="true"></iframe>
         </div>
     </section>
 

@@ -41,7 +41,7 @@
                                 <th class="p-2 text-left">Prodi</th>
                                 <th class="p-2 text-left">KK</th>
                                 <th class="p-2 text-left">JAD</th>
-                                <th class="p-2 text-left">Sub KK</th>
+                                <th class="p-2 text-left">Sub KK/Lab</th>
                                 <th class="p-2 text-left">Pendidikan Terakhir</th>
                                 <th class="p-2 text-left">Tahun Masuk</th>
                                 <th class="p-2 text-left">Studi Lanjut</th>
