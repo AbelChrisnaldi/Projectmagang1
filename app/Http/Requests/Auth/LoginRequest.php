@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
+use App\Services\TelkomSsoClient;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +29,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string'],
         ];
     }
@@ -37,19 +39,44 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function authenticate(): void
+    public function authenticate(TelkomSsoClient $ssoClient): void
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+        $identifier = trim((string) $this->input('email'));
+        $password = (string) $this->input('password');
+        $remember = $this->boolean('remember');
 
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
-            ]);
+        if (config('services.telkom_sso.local_fallback', true)
+            && Auth::attempt(['email' => $identifier, 'password' => $password], $remember)) {
+            RateLimiter::clear($this->throttleKey());
+
+            return;
         }
 
-        RateLimiter::clear($this->throttleKey());
+        $profile = $ssoClient->authenticate($identifier, $password);
+
+        if ($profile !== null) {
+            $email = Str::lower($profile['email']);
+            $matches = User::query()
+                ->whereRaw('LOWER(email) = ?', [$email])
+                ->limit(2)
+                ->get();
+            $user = $matches->count() === 1 ? $matches->first() : null;
+
+            if ($user !== null && hash_equals(Str::lower((string) $user->email), $email)) {
+                Auth::guard('web')->login($user, $remember);
+                RateLimiter::clear($this->throttleKey());
+
+                return;
+            }
+        }
+
+        RateLimiter::hit($this->throttleKey());
+
+        throw ValidationException::withMessages([
+            'email' => trans('auth.failed'),
+        ]);
     }
 
     /**
@@ -80,6 +107,8 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        $identifier = Str::lower(trim((string) $this->input('email')));
+
+        return Str::transliterate($identifier.'|'.$this->ip());
     }
 }
