@@ -8,6 +8,19 @@ test('login screen can be rendered', function () {
     $response = $this->get('/login');
 
     $response->assertStatus(200);
+    $response->assertSee('Email lokal');
+    $response->assertDontSee('Username SSO Tel-U / Email lokal');
+});
+
+test('login screen advertises Tel-U SSO only when it is configured', function () {
+    config()->set([
+        'services.telkom_sso.enabled' => true,
+        'services.telkom_sso.app_key' => 'test-app-key',
+    ]);
+
+    $response = $this->get('/login');
+
+    $response->assertOk();
     $response->assertSee('Username SSO Tel-U / Email lokal');
 });
 
