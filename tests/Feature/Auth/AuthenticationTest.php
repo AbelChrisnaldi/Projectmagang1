@@ -178,12 +178,17 @@ test('Tel-U SSO without an app key never calls the campus API', function () {
 test('users can not authenticate with invalid password', function () {
     $user = User::factory()->create();
 
-    $this->post('/login', [
+    $response = $this->from('/login')->post('/login', [
         'email' => $user->email,
         'password' => 'wrong-password',
     ]);
 
     $this->assertGuest();
+    $response->assertRedirect('/login')->assertSessionHasErrors('email');
+
+    $this->get('/login')
+        ->assertSee('Email/username atau password tidak sesuai. Silakan coba lagi.')
+        ->assertDontSee('auth.failed');
 });
 
 test('users can logout', function () {
