@@ -12,7 +12,7 @@ test('login screen can be rendered', function () {
     $response->assertDontSee('Username SSO Tel-U / Email lokal');
 });
 
-test('login screen advertises Tel-U SSO only when it is configured', function () {
+test('login screen stays local-only even when stale SSO values exist', function () {
     config()->set([
         'services.telkom_sso.enabled' => true,
         'services.telkom_sso.app_key' => 'test-app-key',
@@ -21,7 +21,13 @@ test('login screen advertises Tel-U SSO only when it is configured', function ()
     $response = $this->get('/login');
 
     $response->assertOk();
-    $response->assertSee('Username SSO Tel-U / Email lokal');
+    $response->assertSee('Email lokal');
+    $response->assertDontSee('Username SSO Tel-U / Email lokal');
+});
+
+test('application policy keeps campus SSO disabled by default', function () {
+    expect(config('services.telkom_sso.enabled'))->toBeFalse();
+    expect(config('services.telkom_sso.local_fallback'))->toBeTrue();
 });
 
 test('users can authenticate using the login screen', function () {

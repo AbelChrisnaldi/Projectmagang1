@@ -1,20 +1,15 @@
 <x-guest-layout>
-    @php
-        $ssoEnabled = config('services.telkom_sso.enabled', false)
-            && filled(config('services.telkom_sso.app_key'));
-    @endphp
-
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Campus SSO Username or Local Email -->
+        <!-- Local email -->
         <div>
             <x-input-label
                 for="email"
-                :value="$ssoEnabled ? __('Username SSO Tel-U / Email lokal') : __('Email lokal')"
+                :value="__('Email lokal')"
             />
             <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
